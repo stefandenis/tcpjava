@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="3"
+    android:background="#ffffff"
+    >
+
+    <TextView
+        android:id="@+id/statusText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.5"
+        android:text="@string/status"
+        android:gravity="center"
+        android:textSize="20dp"
+        />
+
+    <Button
+        android:id="@+id/forwardButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="90dp"
+        android:text="forward"
+        android:layout_weight="0"
+    />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="0"
+        android:weightSum="0.75"
+        >
+
+    <Button
+        android:id="@+id/leftButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="left"
+        android:layout_weight="0.25"
+
+        />
+
+        <Button
+            android:id="@+id/stopButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="stop"
+
+            android:layout_weight="0.25"
+            />
+
+
+        <Button
+            android:id="@+id/rightButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="right"
+
+            android:layout_weight="0.25"
+            />
+
+        </LinearLayout>
+
+
+
+
+<Button
+        android:id="@+id/backwardButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="backward"
+        android:layout_weight="0"
+        android:layout_marginHorizontal="90dp"
+        />
+
+
+    <TextView
+        android:id="@+id/controlSpeedText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.5"
+        android:text="@string/controlSpeed"
+        android:gravity="center"
+        android:textSize="25dp"
+
+
+
+    />
+
+    <SeekBar
+        android:id="@+id/controlSpeed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.5" />
+
+
+</LinearLayout>

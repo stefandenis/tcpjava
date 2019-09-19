@@ -2,5 +2,6 @@
     <string name="app_name">TCPcommandROBO</string>
     <string name="valueProposition">Connect to server</string>
     <string name="connect">connect</string>
-
+    <string name="controlSpeed">Control the speed of the motors</string>
+    <string name="status">STATUS: DISCONNECTED</string>
 </resources>
