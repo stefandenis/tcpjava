@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-                //Toast.makeText(getApplicationContext(), ip.getText().toString(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), ip.getText().toString(),Toast.LENGTH_SHORT).show();
             }
 
         });

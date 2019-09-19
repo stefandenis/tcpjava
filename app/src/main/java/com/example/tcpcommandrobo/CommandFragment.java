@@ -12,14 +12,19 @@ import android.app.Fragment;
 
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 public class CommandFragment extends Fragment {
     Button forwardButton,stopButton,backwardButton,leftButton,rightButton;
     TextView statusConnection;
     private String ip;
     private String port;
-
+    private SeekBar seekBar;
+    private TextView pwmDuty;
 
     @Nullable
     @Override
@@ -33,6 +38,11 @@ public class CommandFragment extends Fragment {
         rightButton = (Button) view.findViewById(R.id.rightButton);
         backwardButton = (Button) view.findViewById(R.id.backwardButton);
         statusConnection = (TextView) view.findViewById(R.id.statusText);
+        seekBar = (SeekBar) view.findViewById(R.id.controlSpeed);
+        pwmDuty = (TextView) view.findViewById(R.id.pwmDuty);
+
+        pwmDuty.setText("PWM DUTY: "+ seekBar.getProgress() + "/" + seekBar.getMax());
+
 
         Bundle bundle = getArguments();
         if(bundle!=null){
@@ -75,7 +85,7 @@ public class CommandFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                mTCPClient.WriteCommand("backward");
+                mTCPClient.WriteCommand("backwardx");
             }
         });
 
@@ -84,7 +94,7 @@ public class CommandFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                mTCPClient.WriteCommand("stop");
+                mTCPClient.WriteCommand("stopx");
             }
         });
 
@@ -93,7 +103,7 @@ public class CommandFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                mTCPClient.WriteCommand("left");
+                mTCPClient.WriteCommand("leftx");
             }
         });
 
@@ -102,10 +112,39 @@ public class CommandFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                mTCPClient.WriteCommand("right\n");
+                mTCPClient.WriteCommand("rightx");
             }
         });
 
+
+
+
+
+
+        seekBar.setOnSeekBarChangeListener(
+
+                new SeekBar.OnSeekBarChangeListener() {
+                    int seekbar_progress;
+                    @Override
+                    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                        seekbar_progress = progress;
+                        pwmDuty.setText("PWM DUTY: "+ progress + "/" + seekBar.getMax());
+                       // Toast.makeText(getActivity(),"Seekbar in progress", Toast.LENGTH_SHORT).show();
+                        mTCPClient.WriteCommand(Integer.toString(progress));
+                    }
+
+                    @Override
+                    public void onStartTrackingTouch(SeekBar seekBar) {
+                       // Toast.makeText(getActivity(),"Seekbar start", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onStopTrackingTouch(SeekBar seekBar) {
+                        pwmDuty.setText("PWM DUTY: "+ seekbar_progress + "/" + seekBar.getMax());
+                        //Toast.makeText(getActivity(),"Seekbar stop", Toast.LENGTH_SHORT).show();
+                    }
+                }
+        );
 
 
         return view;

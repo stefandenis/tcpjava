@@ -102,7 +102,7 @@ public class TCPClient {
                     startTime = System.currentTimeMillis();
                     try {
                         //Send the length of the data to be sent
-                        this.out.write(ByteBuffer.allocate(4).putInt(b.length).array());
+
                         //Send the data
                         this.out.write(b, 0, b.length);
                         //Flush the stream to be sure all bytes has been written out

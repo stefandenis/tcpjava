@@ -96,4 +96,11 @@
         android:layout_weight="0.5" />
 
 
+    <TextView
+        android:id="@+id/pwmDuty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.50"
+        android:gravity="center"
+        />
 </LinearLayout>
